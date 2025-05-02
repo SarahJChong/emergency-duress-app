@@ -1,0 +1,268 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Checkbox matches snapshot for different states 1`] = `
+<View
+  className="flex-row undefined"
+>
+  <View
+    accessibilityRole="checkbox"
+    accessibilityState={
+      {
+        "busy": undefined,
+        "checked": undefined,
+        "disabled": true,
+        "expanded": undefined,
+        "selected": undefined,
+      }
+    }
+    accessibilityValue={
+      {
+        "max": undefined,
+        "min": undefined,
+        "now": undefined,
+        "text": undefined,
+      }
+    }
+    accessible={true}
+    className="mr-2 px-2.5 py-2.5 accent-gray-500"
+    collapsable={false}
+    focusable={true}
+    id=":r5:"
+    onBlur={[Function]}
+    onClick={[Function]}
+    onFocus={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    role="checkbox"
+    style={
+      [
+        {
+          "borderColor": "#657786",
+          "borderRadius": 2,
+          "borderWidth": 2,
+          "height": 20,
+          "width": 20,
+        },
+        undefined,
+        undefined,
+        {
+          "backgroundColor": undefined,
+          "borderColor": "#003951",
+        },
+        {
+          "backgroundColor": "transparent",
+          "borderColor": "#CCD6DD",
+        },
+        undefined,
+      ]
+    }
+  />
+  <Text
+    className="text-sm text-gray-400"
+  >
+    Disabled Checkbox
+  </Text>
+</View>
+`;
+
+exports[`Checkbox renders with a large size variant 1`] = `
+<View
+  className="flex-row undefined"
+>
+  <View
+    accessibilityRole="checkbox"
+    accessibilityState={
+      {
+        "busy": undefined,
+        "checked": undefined,
+        "disabled": undefined,
+        "expanded": undefined,
+        "selected": undefined,
+      }
+    }
+    accessibilityValue={
+      {
+        "max": undefined,
+        "min": undefined,
+        "now": undefined,
+        "text": undefined,
+      }
+    }
+    accessible={true}
+    className="mr-2 accent-primary px-4 py-4"
+    collapsable={false}
+    focusable={true}
+    id=":r2:"
+    onBlur={[Function]}
+    onClick={[Function]}
+    onFocus={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    role="checkbox"
+    style={
+      [
+        {
+          "borderColor": "#657786",
+          "borderRadius": 2,
+          "borderWidth": 2,
+          "height": 20,
+          "width": 20,
+        },
+        undefined,
+        undefined,
+        {
+          "backgroundColor": undefined,
+          "borderColor": "#003951",
+        },
+        undefined,
+        undefined,
+      ]
+    }
+  />
+  <Text
+    className="text-md"
+  >
+    Large Checkbox
+  </Text>
+</View>
+`;
+
+exports[`Checkbox renders with a secondary color variant 1`] = `
+<View
+  className="flex-row undefined"
+>
+  <View
+    accessibilityRole="checkbox"
+    accessibilityState={
+      {
+        "busy": undefined,
+        "checked": undefined,
+        "disabled": undefined,
+        "expanded": undefined,
+        "selected": undefined,
+      }
+    }
+    accessibilityValue={
+      {
+        "max": undefined,
+        "min": undefined,
+        "now": undefined,
+        "text": undefined,
+      }
+    }
+    accessible={true}
+    className="mr-2 px-2.5 py-2.5"
+    collapsable={false}
+    focusable={true}
+    id=":r1:"
+    onBlur={[Function]}
+    onClick={[Function]}
+    onFocus={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    role="checkbox"
+    style={
+      [
+        {
+          "borderColor": "#657786",
+          "borderRadius": 2,
+          "borderWidth": 2,
+          "height": 20,
+          "width": 20,
+        },
+        undefined,
+        undefined,
+        {
+          "backgroundColor": undefined,
+          "borderColor": "#04c8c7",
+        },
+        undefined,
+        undefined,
+      ]
+    }
+  />
+  <Text
+    className="text-sm"
+  >
+    Secondary
+  </Text>
+</View>
+`;
+
+exports[`Checkbox renders with default props 1`] = `
+<View
+  className="flex-row undefined"
+>
+  <View
+    accessibilityRole="checkbox"
+    accessibilityState={
+      {
+        "busy": undefined,
+        "checked": undefined,
+        "disabled": undefined,
+        "expanded": undefined,
+        "selected": undefined,
+      }
+    }
+    accessibilityValue={
+      {
+        "max": undefined,
+        "min": undefined,
+        "now": undefined,
+        "text": undefined,
+      }
+    }
+    accessible={true}
+    className="mr-2 accent-primary px-2.5 py-2.5"
+    collapsable={false}
+    focusable={true}
+    id=":r0:"
+    onBlur={[Function]}
+    onClick={[Function]}
+    onFocus={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    role="checkbox"
+    style={
+      [
+        {
+          "borderColor": "#657786",
+          "borderRadius": 2,
+          "borderWidth": 2,
+          "height": 20,
+          "width": 20,
+        },
+        undefined,
+        undefined,
+        {
+          "backgroundColor": undefined,
+          "borderColor": "#003951",
+        },
+        undefined,
+        undefined,
+      ]
+    }
+  />
+  <Text
+    className="text-sm"
+  >
+    Default Checkbox
+  </Text>
+</View>
+`;

@@ -1,0 +1,51 @@
+version: 2
+updates:
+  # Expo app npm dependencies
+  - package-ecosystem: "npm"
+    directory: "/apps/expo"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "09:00"
+      timezone: "Australia/Perth"
+    groups:
+      dependencies:
+        patterns:
+          - "*"
+    open-pull-requests-limit: 10
+    labels:
+      - "dependencies"
+      - "expo"
+
+  # .NET API NuGet dependencies
+  - package-ecosystem: "nuget"
+    directory: "/apps/api"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "09:00"
+      timezone: "Australia/Perth"
+    groups:
+      dependencies:
+        patterns:
+          - "*"
+    open-pull-requests-limit: 10
+    labels:
+      - "dependencies"
+      - "api"
+
+  # GitHub Actions
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "09:00"
+      timezone: "Australia/Perth"
+    groups:
+      github-actions:
+        patterns:
+          - "*"
+    labels:
+      - "dependencies"
+      - "github-actions"

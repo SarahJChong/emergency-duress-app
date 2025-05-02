@@ -1,0 +1,69 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FormCheckboxField matches snapshot 1`] = `
+<View
+  className="my-2"
+>
+  <View
+    className="flex-row undefined"
+  >
+    <View
+      accessibilityRole="checkbox"
+      accessibilityState={
+        {
+          "busy": undefined,
+          "checked": false,
+          "disabled": undefined,
+          "expanded": undefined,
+          "selected": undefined,
+        }
+      }
+      accessibilityValue={
+        {
+          "max": undefined,
+          "min": undefined,
+          "now": undefined,
+          "text": undefined,
+        }
+      }
+      accessible={true}
+      className="mr-2 accent-primary px-2.5 py-2.5"
+      collapsable={false}
+      focusable={true}
+      id=":r5:"
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      role="checkbox"
+      style={
+        [
+          {
+            "borderColor": "#657786",
+            "borderRadius": 2,
+            "borderWidth": 2,
+            "height": 20,
+            "width": 20,
+          },
+          undefined,
+          false,
+          {
+            "backgroundColor": undefined,
+            "borderColor": "#003951",
+          },
+          undefined,
+          false,
+        ]
+      }
+    />
+    <Text
+      className="text-sm"
+    />
+  </View>
+</View>
+`;

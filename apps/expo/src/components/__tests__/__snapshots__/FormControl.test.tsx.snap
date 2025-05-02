@@ -1,0 +1,72 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FormControl applies custom className 1`] = `
+<View
+  className="my-2 custom-class"
+>
+  <View />
+</View>
+`;
+
+exports[`FormControl matches snapshot 1`] = `
+<View
+  className="my-2"
+>
+  <View />
+</View>
+`;
+
+exports[`FormControlError matches snapshot 1`] = `
+<View
+  className="my-2"
+>
+  <View
+    className="flex flex-row items-center mt-2 gap-2"
+  >
+    <Text>
+      Error message
+    </Text>
+  </View>
+</View>
+`;
+
+exports[`FormControlErrorIcon renders with custom props 1`] = `
+<
+  className="custom-class"
+  color="#ff0000"
+  name="warning-outline"
+  size={32}
+/>
+`;
+
+exports[`FormControlErrorIcon renders with default props 1`] = `
+<
+  color="#ef4444"
+  name="alert-circle-outline"
+  size={24}
+/>
+`;
+
+exports[`FormControlErrorText applies custom className 1`] = `
+<Text
+  className="text-red-500 text-sm custom-class"
+>
+  Error message
+</Text>
+`;
+
+exports[`FormControlLabel applies custom className 1`] = `
+<Text
+  className="text-base text-neutral-800 font-semibold custom-class"
+>
+  Label Text
+</Text>
+`;
+
+exports[`FormControlLabel renders correctly 1`] = `
+<Text
+  className="text-base text-neutral-800 font-semibold"
+>
+  Web Label
+</Text>
+`;

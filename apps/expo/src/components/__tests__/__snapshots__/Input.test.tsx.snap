@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Input - Additional Tests matches snapshot with different states 1`] = `
+<View
+  className="my-2"
+>
+  <TextInput
+    aria-disabled={true}
+    aria-invalid={true}
+    className="block w-full rounded-md bg-white px-3 py-2.5 text-base outline outline-1 -outline-offset-1 outline-gray-300 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-accent sm:text-sm/6 cursor-not-allowed border-gray-200 text-gray-300 placeholder:text-gray-400"
+    placeholder="Enter text"
+    readOnly={true}
+  />
+</View>
+`;

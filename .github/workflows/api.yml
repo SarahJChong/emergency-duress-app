@@ -1,0 +1,113 @@
+name: .NET API CI
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - "apps/Api/**"
+      - ".github/workflows/api.yml"
+  push:
+    branches: [main]
+    paths:
+      - "apps/Api/**"
+      - ".github/workflows/api.yml"
+
+jobs:
+  build-and-test:
+    name: Build & Test
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: apps/Api
+
+    strategy:
+      matrix:
+        dotnet-version: ["8.0.x"]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup .NET Core SDK ${{ matrix.dotnet-version }}
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: ${{ matrix.dotnet-version }}
+
+      - name: Restore dependencies
+        run: dotnet restore
+
+      - name: Build
+        run: dotnet build --configuration Release --no-restore
+
+      - name: Test with coverage
+        run: |
+          dotnet test \
+            --configuration Release \
+            --no-build \
+            --verbosity normal \
+            --collect:"XPlat Code Coverage" \
+            --results-directory ./coverage
+
+      - name: Install ReportGenerator
+        run: dotnet tool install -g dotnet-reportgenerator-globaltool
+
+      - name: Generate HTML Coverage Report
+        run: |
+          coverage_file=$(find ./coverage -name "coverage.cobertura.xml" | head -n 1)
+          reportgenerator \
+            "-reports:$coverage_file" \
+            "-targetdir:./coverage-report" \
+            "-reporttypes:Html"
+
+      - name: Upload Cobertura XML Coverage Report
+        uses: actions/upload-artifact@v4
+        with:
+          name: api-coverage-xml
+          path: apps/Api/coverage
+          retention-days: 14
+
+      - name: Upload HTML Coverage Report
+        uses: actions/upload-artifact@v4
+        with:
+          name: api-coverage-html
+          path: apps/Api/coverage-report
+          retention-days: 14
+
+      - name: Upload Build Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: api-build
+          path: |
+            ./apps/Api/Api/bin/Release/net8.0
+            !./apps/Api/Api/bin/Release/net8.0/*.pdb
+          retention-days: 7
+
+  # security-scan:
+  #   name: Security Scan
+  #   runs-on: ubuntu-latest
+  #   defaults:
+  #     run:
+  #       working-directory: apps/Api
+
+  #   permissions:
+  #     actions: read
+  #     contents: read
+  #     security-events: write
+
+  #   steps:
+  #     - uses: actions/checkout@v4
+
+  #     - name: Initialize CodeQL
+  #       uses: github/codeql-action/init@v3
+  #       with:
+  #         languages: csharp
+
+  #     - name: Setup .NET Core SDK
+  #       uses: actions/setup-dotnet@v4
+  #       with:
+  #         dotnet-version: "8.0.x"
+
+  #     - name: Build
+  #       run: dotnet build
+
+  #     - name: Perform CodeQL Analysis
+  #       uses: github/codeql-action/analyze@v3
