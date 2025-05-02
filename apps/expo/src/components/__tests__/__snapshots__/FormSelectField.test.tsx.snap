@@ -1,0 +1,55 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FormSelectField matches snapshot 1`] = `
+<View
+  className="my-2"
+>
+  <Text
+    className="text-base text-neutral-800 font-semibold"
+    id=":ra:"
+  >
+    Test Select
+  </Text>
+  <View
+    accessibilityLabel="Test Select"
+    accessibilityState={
+      {
+        "busy": undefined,
+        "checked": undefined,
+        "disabled": undefined,
+        "expanded": undefined,
+        "selected": undefined,
+      }
+    }
+    accessibilityValue={
+      {
+        "max": undefined,
+        "min": undefined,
+        "now": undefined,
+        "text": undefined,
+      }
+    }
+    accessible={true}
+    aria-labelledby=":ra:"
+    className="rounded border bg-white px-4 py-2"
+    collapsable={false}
+    focusable={true}
+    id=":rb:"
+    onBlur={[Function]}
+    onClick={[Function]}
+    onFocus={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+  >
+    <Text
+      className="text-black"
+    >
+      Select...
+    </Text>
+  </View>
+</View>
+`;

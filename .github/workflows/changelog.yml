@@ -1,0 +1,88 @@
+name: Changelog Check
+
+on:
+  pull_request:
+    branches: [main]
+    # Only run if CHANGELOG.md could have been modified
+    paths-ignore:
+      - "**.md"
+      - "!CHANGELOG.md"
+      - "docs/**"
+      - ".github/**"
+
+jobs:
+  changelog:
+    name: Verify CHANGELOG Update
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # Required to compare changes with base branch
+
+      - name: Get changed files
+        id: changed-files
+        uses: tj-actions/changed-files@v46
+        with:
+          files: |
+            CHANGELOG.md
+
+      - name: Check if PR needs changelog entry
+        id: need-changelog
+        run: |
+          # Skip for certain PR types
+          if [[ "${{ github.event.pull_request.title }}" =~ ^(doc:|docs:|chore:|ci:) ]] || \
+             [[ "${{ github.actor }}" == "dependabot[bot]" ]]; then
+            echo "PR type doesn't require changelog entry"
+            echo "required=false" >> $GITHUB_OUTPUT
+            exit 0
+          fi
+
+          echo "required=true" >> $GITHUB_OUTPUT
+
+      - name: Verify changelog update
+        if: steps.need-changelog.outputs.required == 'true'
+        run: |
+          if [[ "${{ steps.changed-files.outputs.any_modified }}" != "true" ]]; then
+            echo "::error::No changes found in CHANGELOG.md. Please add an entry for your changes."
+            echo ""
+            echo "Your entry should go under the appropriate section in [Unreleased]:"
+            echo "🎉 Added - for new features"
+            echo "🛠 Changed - for changes in existing functionality"
+            echo "⚠️ Deprecated - for soon-to-be removed features"
+            echo "🗑 Removed - for now removed features"
+            echo "🐛 Fixed - for any bug fixes"
+            echo "🛡 Security - in case of vulnerabilities"
+            exit 1
+          fi
+
+      - name: Validate changelog format
+        if: steps.need-changelog.outputs.required == 'true' && steps.changed-files.outputs.any_modified == 'true'
+        run: |
+          # Check if [Unreleased] section exists and has been modified
+          if ! grep -A 10 "## \[Unreleased\]" CHANGELOG.md | grep -q "###"; then
+            echo "::error::No entry found in [Unreleased] section. Please add your changes under the appropriate subsection."
+            exit 1
+          fi
+
+          # Verify the entry follows our emoji convention
+          VALID_SECTIONS=("🎉 Added" "🛠 Changed" "⚠️ Deprecated" "🗑 Removed" "🐛 Fixed" "🛡 Security")
+          FOUND_VALID_SECTION=false
+
+          for section in "${VALID_SECTIONS[@]}"; do
+            if grep -q "### ${section}" CHANGELOG.md; then
+              FOUND_VALID_SECTION=true
+              break
+            fi
+          done
+
+          if [ "$FOUND_VALID_SECTION" = false ]; then
+            echo "::error::Changelog entry must be under one of these sections:"
+            echo "### 🎉 Added"
+            echo "### 🛠 Changed"
+            echo "### ⚠️ Deprecated"
+            echo "### 🗑 Removed"
+            echo "### 🐛 Fixed"
+            echo "### 🛡 Security"
+            exit 1
+          fi

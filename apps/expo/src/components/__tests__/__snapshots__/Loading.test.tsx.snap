@@ -1,0 +1,53 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LoadingScreen matches snapshot 1`] = `
+<View
+  className="flex-1 items-center justify-center gap-4 bg-white"
+>
+  <ViewManagerAdapter_ExpoImage
+    accessibilityLabel="brand icon"
+    className="m-2 size-20"
+    containerViewRef={"[React.ref]"}
+    contentFit="cover"
+    contentPosition={
+      {
+        "left": "50%",
+        "top": "50%",
+      }
+    }
+    nativeViewRef={"[React.ref]"}
+    onError={[Function]}
+    onLoad={[Function]}
+    onLoadStart={[Function]}
+    onProgress={[Function]}
+    placeholder={[]}
+    source={
+      [
+        {
+          "uri": "test-file-stub",
+        },
+      ]
+    }
+    style={{}}
+    transition={null}
+  />
+  <Text
+    accessibilityRole="header"
+    className="animate-bounce text-primary"
+    style={
+      {
+        "fontSize": 64,
+        "fontWeight": "bold",
+        "marginVertical": 21.44,
+      }
+    }
+  >
+    Loading...
+  </Text>
+  <ActivityIndicator
+    aria-label="Loading spinner"
+    className="text-primary"
+    size="large"
+  />
+</View>
+`;

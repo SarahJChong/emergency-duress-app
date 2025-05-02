@@ -1,0 +1,46 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FormInputField matches snapshot 1`] = `[Function]`;
+
+exports[`FormInputField matches snapshot with error state 1`] = `
+<View
+  className="my-2"
+>
+  <Text
+    className="text-base text-neutral-800 font-semibold"
+    id=":re:"
+  >
+    Test Input
+    <Text
+      className="ml-0.5"
+    >
+      *
+    </Text>
+  </Text>
+  <TextInput
+    accessibilityLabel="Test Input"
+    aria-invalid={true}
+    aria-labelledby=":re:"
+    aria-required={true}
+    className="block w-full rounded-md bg-white px-3 py-2.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-accent sm:text-sm/6 border-red-500"
+    editable={true}
+    id=":rf:"
+    placeholder="Enter text"
+    selectTextOnFocus={true}
+  />
+  <View
+    className="flex flex-row items-center mt-2 gap-2"
+  >
+    <
+      color="#ef4444"
+      name="alert-circle-outline"
+      size={24}
+    />
+    <Text
+      className="text-red-500 text-sm"
+    >
+      Required field
+    </Text>
+  </View>
+</View>
+`;

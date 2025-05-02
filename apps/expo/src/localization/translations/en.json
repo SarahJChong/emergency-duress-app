@@ -1,0 +1,268 @@
+{
+  "common": {
+    "ok": "OK",
+    "cancel": "Cancel",
+    "close": "Close",
+    "save": "Save",
+    "delete": "Delete",
+    "confirm": "Confirm",
+    "back": "Back",
+    "loading": "Loading...",
+    "sign_out": "Sign Out"
+  },
+  "admin": {
+    "dashboard_title": "Admin Dashboard",
+    "locations_title": "Locations Management",
+    "welcome": "Welcome, {{name}}",
+    "subtitle": "Manage your organization's settings and configurations",
+    "features": {
+      "locations": {
+        "title": "Locations",
+        "description": "Manage locations and their security teams"
+      },
+      "users": {
+        "title": "Users",
+        "description": "Manage user accounts and permissions"
+      },
+      "settings": {
+        "title": "Settings",
+        "description": "Configure system-wide settings and preferences"
+      }
+    }
+  },
+  "header": {
+    "resources": "Resources",
+    "privacy_policy": "Privacy Policy",
+    "terms": "Terms & Conditions",
+    "menu": {
+      "aria_label": "Menu"
+    },
+    "brand_icon": {
+      "aria_label": "brand icon"
+    }
+  },
+  "incidents": {
+    "title": "Incidents",
+    "create": "Create Incident",
+    "details": "Incident Details",
+    "status": "Status",
+    "location": "Location",
+    "description": "Description",
+    "close": {
+      "title": "Resolve Incident",
+      "notes": {
+        "label": "Closure Notes",
+        "placeholder": "Enter closure notes...",
+        "required": "Closure notes are required"
+      },
+      "button": {
+        "close": "Resolve Incident",
+        "closing": "Closing..."
+      },
+      "errors": {
+        "user_not_found": "User not found"
+      }
+    }
+  },
+  "locations": {
+    "title": "Locations",
+    "select": "Select Location",
+    "current": "Current Location",
+    "no_permission": "You do not have permission to access this page.",
+    "create_success": "Location created successfully",
+    "create_failure": "Failed to create location",
+    "update_success": "Location updated successfully",
+    "update_failure": "Failed to update location",
+    "delete_success": "Location deleted successfully",
+    "delete_failure": "Failed to delete location",
+    "delete_not_implemented": "Delete functionality not implemented for native platforms",
+    "add_button": "Add Location",
+    "phone": "Phone",
+    "email": "Email",
+    "locked": "Locked - Has Incidents",
+    "manage_security": "Manage Security",
+    "edit_button": "Edit",
+    "delete_button": "Delete",
+    "no_locations": "No locations found",
+    "subtitle": "Configure locations and their default contact details"
+  },
+  "auth": {
+    "login": "Login",
+    "logout": "Logout",
+    "register": "Register"
+  },
+  "not_found": {
+    "title": "Oops!",
+    "message": "This screen doesn't exist.",
+    "home_link": "Go to home screen!"
+  },
+  "privacy": {
+    "title": "Privacy Policy",
+    "content": "Privacy Policy\n\nOverview\nThe Duress app is designed to provide emergency assistance while respecting your privacy.\n\nData Sharing Consent\nAnonymous error logs may be collected to improve app performance and reliability.\n\nIf you accept to share your data, your profile information will be sent during a Duress call unless you choose to remain anonymous.\nAnonymous calls will not include personal information.\nIf the Duress app encounters an error, anonymous or redacted error data will be sent for debugging and performance monitoring\n\nFor questions about this privacy policy or your data, please contact our support team."
+  },
+  "terms": {
+    "title": "Terms and Conditions",
+    "content": "Terms and Conditions\n\nAgreement\nBy using the Duress app, you agree to these terms and our data sharing practices.\n\nData Sharing Consent\nAnonymous error logs may be collected to improve app performance and reliability.\n\nIf you accept to share your data, your profile information will be sent during a Duress call unless you choose to remain anonymous.\nAnonymous calls will not include personal information.\nIf the Duress app encounters an error, anonymous or redacted error data will be sent for debugging and performance monitoring"
+  },
+  "security": {
+    "dashboard_title": "Security Dashboard",
+    "incident_details": "Incident Details",
+    "close_incident": "Resolve Incident",
+    "error_loading_incident": "Error loading incident details",
+    "retry": "Retry",
+    "incident_not_found": "Incident not found",
+    "loading_incident_details": "Loading incident details...",
+    "filters": {
+      "status": "Status",
+      "date_range": "Date Range",
+      "sort_by": "Sort By",
+      "location": "Location",
+      "all_locations": "All Locations",
+      "all_statuses": "All Statuses"
+    },
+    "date_options": {
+      "all_time": "All Time",
+      "last_24h": "Last 24 Hours",
+      "last_7d": "Last 7 Days",
+      "last_30d": "Last 30 Days"
+    },
+    "sort_options": {
+      "date_recent": "Date (Recent First)",
+      "date_oldest": "Date (Oldest First)",
+      "status_asc": "Status (A-Z)",
+      "status_desc": "Status (Z-A)"
+    },
+    "status": {
+      "open": "Open",
+      "closed": "Resolved",
+      "cancelled": "Cancelled"
+    },
+    "incident": {
+      "report_title": "Incident Report",
+      "date_called": "Date Called",
+      "date_closed": "Date Resolved",
+      "date_cancelled": "Date Cancelled",
+      "duration": "Duration",
+      "status": "Status",
+      "name": "Name",
+      "contact": "Contact",
+      "location": "Location",
+      "room_number": "Room Number",
+      "gps_location": "GPS Location",
+      "closed_by": "Resolved By",
+      "closure_notes": "Closure Notes",
+      "cancellation_reason": "Cancellation Reason",
+      "anonymous": "Anonymous",
+      "not_provided": "Not provided",
+      "unknown_location": "Unknown Location",
+      "view_details": "View Details",
+      "failed_to_close": "Failed to resolve incident. Please try again.",
+      "no_incidents": "No incidents found.",
+      "failed_to_load": "Failed to load incidents."
+    }
+  },
+  "user": {
+    "tabs": {
+      "duress": "Emergency",
+      "settings": "Settings"
+    },
+    "headers": {
+      "emergency_request": "Emergency Request",
+      "settings": "Settings"
+    },
+    "anonymous": "Anonymous",
+    "mobile": "Mobile",
+    "site": "Site",
+    "room": "Room",
+    "emergency_call": {
+      "creating": "Creating Emergency Call...",
+      "active": "Emergency Call Active",
+      "default": "Make Emergency Call"
+    },
+    "anonymize_label": "Anonymize my name and mobile",
+    "cancel_emergency": {
+      "title": "Cancel Emergency",
+      "confirmation": "Are you sure you want to cancel the emergency call?",
+      "reason_placeholder": "Please provide a reason for cancellation",
+      "reason_required": "Reason for cancellation is required",
+      "cancel_button": "No, Keep Active",
+      "cancelling": "Cancelling...",
+      "confirm_button": "Yes, Cancel"
+    },
+    "incidents": {
+      "title": "My Incidents",
+      "view_details": "View Details",
+      "details_title": "Incident Details",
+      "loading": "Loading incidents...",
+      "error_loading": "Error loading incidents",
+      "retry": "Retry",
+      "no_incidents": "No incidents found",
+      "filters": {
+        "status": "Status",
+        "date_range": "Date Range",
+        "sort_by": "Sort By"
+      },
+      "date_options": {
+        "all_time": "All Time",
+        "last_24h": "Last 24 Hours",
+        "last_7d": "Last 7 Days",
+        "last_30d": "Last 30 Days"
+      },
+      "sort_options": {
+        "date_recent": "Date (Recent First)",
+        "date_oldest": "Date (Oldest First)",
+        "status_asc": "Status (A-Z)",
+        "status_desc": "Status (Z-A)"
+      },
+      "incident": {
+        "report_title": "Incident Report",
+        "details_header": "Incident Details",
+        "error_loading": "Error loading incident details",
+        "loading": "Loading incident details...",
+        "not_found": "Incident not found",
+        "not_found_offline": "Incident not found (offline mode)",
+        "date_called": "Date Called",
+        "date_closed": "Date Resolved",
+        "date_cancelled": "Date Cancelled",
+        "duration": "Duration",
+        "status": "Status",
+        "name": "Name",
+        "contact": "Contact",
+        "location": "Location",
+        "room_number": "Room Number",
+        "gps_location": "GPS Location",
+        "closed_by": "Resolved By",
+        "closure_notes": "Closure Notes",
+        "cancellation_reason": "Cancellation Reason",
+        "not_provided": "Not provided",
+        "location_unknown": "Unknown Location"
+      }
+    }
+  },
+  "settings": {
+    "title": "Settings",
+    "menu": {
+      "profile": "Profile",
+      "past_incidents": "Past Incidents",
+      "diagnostics": "Diagnostics"
+    },
+    "profile": {
+      "title": "Update Profile",
+      "mobile_label": "Mobile",
+      "mobile_placeholder": "+61400000123",
+      "location_label": "Location",
+      "room_label": "Room No.",
+      "room_placeholder": "Optional",
+      "update_button": "Update Profile",
+      "updating": "Updating..."
+    },
+    "diagnostics": {
+      "title": "Diagnostics Settings",
+      "anonymous_data_collection": "Anonymous Data Collection",
+      "help_text": "Help improve the app by sending anonymous diagnostic data",
+      "privacy_note": "All data is automatically redacted to remove personal information",
+      "save_button": "Save Changes",
+      "saving": "Saving..."
+    }
+  }
+}

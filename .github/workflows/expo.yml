@@ -1,0 +1,108 @@
+name: Expo App CI
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - "apps/expo/**"
+      - ".github/workflows/expo.yml"
+  push:
+    branches: [main]
+    paths:
+      - "apps/expo/**"
+      - ".github/workflows/expo.yml"
+
+jobs:
+  lint-and-typecheck:
+    name: Lint & Type Check
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./apps/expo
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+          cache: "npm"
+          cache-dependency-path: "**/package-lock.json"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run ESLint
+        run: npm run lint
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: apps/expo
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+          cache: "npm"
+          cache-dependency-path: "**/package-lock.json"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run tests
+        run: npm test -- --coverage --watchAll=false
+
+      - name: Upload coverage report
+        uses: actions/upload-artifact@v4
+        with:
+          name: expo-coverage
+          path: apps/expo/coverage
+          retention-days: 14
+
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    env:
+      EXPO_PUBLIC_EMERGENCY_PHONE_NUMBER: "1234567"
+      EXPO_PUBLIC_AUTH_CLIENT_ID: "test_id"
+      EXPO_PUBLIC_AUTH_ENDPOINT: "https://test.com"
+      EXPO_PUBLIC_COLOR_PRIMARY: "#003951"
+      EXPO_PUBLIC_COLOR_SECONDARY: "#04c8c7"
+      EXPO_PUBLIC_COLOR_ACCENT: "#00A0DE"
+      EXPO_PUBLIC_COLOR_SUCCESS: "#24b049"
+      EXPO_PUBLIC_COLOR_ERROR: "#F1615E"
+      EXPO_PUBLIC_COLOR_WARNING: "#ffcc00"
+      EXPO_PUBLIC_RESOURCES_URL: "https://leadchangerespect.com.au"
+      EXPO_PUBLIC_VAPID_KEY: "test_key"
+    defaults:
+      run:
+        working-directory: ./apps/expo
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+          cache: "npm"
+          cache-dependency-path: "**/package-lock.json"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build web version
+        run: npm run build:web
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: expo-web-build
+          path: apps/expo/dist
+          retention-days: 7
