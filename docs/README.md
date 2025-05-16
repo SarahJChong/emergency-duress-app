@@ -4,6 +4,15 @@
 
 Welcome to the Emergency Duress App documentation. This directory contains comprehensive documentation for various aspects of the project.
 
+## Getting Started
+
+To quickly set up and configure the Emergency Duress App, start with our [Getting Started Guide](./setup/README.md). This guide provides:
+
+- Essential setup instructions
+- Authentication configuration with Auth0 sample
+- Email notification setup with SendGrid integration
+- Additional configuration options
+
 ## Documentation Sections
 
 ### CI/CD Pipeline
@@ -31,6 +40,7 @@ Welcome to the Emergency Duress App documentation. This directory contains compr
 
 ### Setup & Configuration
 
+- [Getting Started Guide](./setup/README.md) - Overview and setup process
 - [Authentication Setup](./setup/auth.md) - Authentication configuration and implementation guide
 - [Role Configuration](./setup/roles.md) - Role-based access control and permission structure
 

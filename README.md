@@ -5,6 +5,14 @@
 
 A comprehensive emergency response system designed to provide immediate assistance in duress situations. The application allows users to quickly signal for help, while enabling security responders to efficiently manage and respond to incidents.
 
+## Getting Started
+
+For complete setup and configuration instructions, check out our [Getting Started Guide](docs/setup/README.md). This guide covers:
+
+- Authentication setup with sample Auth0 configuration
+- Email notifications setup with SendGrid integration
+- Other essential configuration steps
+
 ## Features
 
 - Quick emergency signal activation
@@ -35,6 +43,7 @@ Detailed documentation can be found in the following locations:
 - [API Documentation](apps/Api) - API endpoints and integration details
 - [Architecture Overview](docs/architecture) - System design and components
 - [Feature Documentation](docs/features) - Detailed feature descriptions
+- [Getting Started Guide](docs/setup/README.md) - Setup and configuration instructions
 
 ## Getting Started
 

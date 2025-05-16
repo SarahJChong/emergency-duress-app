@@ -4,6 +4,107 @@
 
 The Emergency Duress App uses Auth0 for authentication with OAuth 2.0 and OpenID Connect (OIDC), implementing the Authorization Code Flow with PKCE (Proof Key for Code Exchange) for enhanced security.
 
+## Auth0 Setup
+
+### 1. Create an Auth0 Account
+
+1. Visit [Auth0's website](https://auth0.com) and sign up for an account if you haven't already
+2. Log in to the Auth0 dashboard at https://manage.auth0.com
+
+### 2. Create and Configure API
+
+1. In the Auth0 dashboard, go to "Applications" > "APIs" > "Create API"
+2. Configure the API:
+   - Name: "Emergency Duress API"
+   - Identifier (audience): `http://localhost:5052/` (or your production API URL)
+   - Signing Algorithm: RS256
+3. In the API Settings:
+   - Enable RBAC (Role-Based Access Control)
+   - Enable "Add Permissions in the Access Token"
+
+### 3. Create Applications
+
+#### Single Page Application (SPA)
+
+1. Go to "Applications" > "Create Application"
+2. Name: "Emergency Duress App (SPA)"
+3. Select "Single Page Application" type
+4. Configure settings:
+   - **Allowed Callback URLs:**
+     ```
+     http://localhost:3000/callback
+     ```
+   - **Allowed Logout URLs:**
+     ```
+     http://localhost:3000
+     ```
+   - **Allowed Web Origins:**
+     ```
+     http://localhost:3000
+     ```
+
+#### API Application
+
+1. Go to "Applications" > "Create Application"
+2. Name: "Emergency Duress API (Machine to Machine)"
+3. Select "Machine to Machine" type
+4. Select the API created in step 2
+5. Configure settings:
+   - Grant required permissions to the API
+   - Note the Client ID and Client Secret for API configuration
+
+### 4. Configure Configuration Values
+
+#### For the SPA (.env):
+
+```bash
+# Auth0 Configuration
+EXPO_PUBLIC_AUTH_CLIENT_ID=YOUR_SPA_CLIENT_ID
+EXPO_PUBLIC_AUTH_ENDPOINT=https://YOUR_AUTH0_DOMAIN.auth0.com
+```
+
+#### For the API (appsettings.json):
+
+```json
+{
+  "Authentication": {
+    "Authority": "https://YOUR_AUTH0_DOMAIN.auth0.com",
+    "Audience": "http://localhost:5052/",
+    "RoleClaimType": "emergency_app/roles"
+  }
+}
+```
+
+### 5. Configure Custom Claims
+
+1. Go to "Actions" > "Library" in the Auth0 dashboard
+2. Create a new action that adds roles to the token:
+
+```javascript
+exports.onExecutePostLogin = async (event, api) => {
+  const namespace = "emergency_app";
+  if (event.authorization) {
+    api.idToken.setCustomClaim(`${namespace}/roles`, event.authorization.roles);
+    api.accessToken.setCustomClaim(
+      `${namespace}/roles`,
+      event.authorization.roles
+    );
+  }
+};
+```
+
+### 6. Security Testing
+
+1. Test the SPA authentication flow using the Auth0 Universal Login
+2. Verify PKCE implementation using browser developer tools
+3. Test API authentication using a tool like Postman:
+   - Generate a test token using the Machine to Machine application credentials
+   - Make API requests with the Bearer token
+4. Confirm custom claims are present in both access and ID tokens
+5. Test role-based access control functionality
+
+For more details on custom claims and security best practices, refer to the [Auth0 Documentation](https://auth0.com/docs/secure/tokens/json-web-tokens/create-custom-claims).
+
 ## API Configuration
 
 Authentication settings are configured in `appsettings.json`:

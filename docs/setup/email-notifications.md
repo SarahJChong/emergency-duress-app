@@ -4,6 +4,44 @@ The emergency duress application supports sending email notifications to securit
 
 ## Configuration
 
+## SendGrid Setup
+
+1. **Create a SendGrid Account**
+
+   - Visit [SendGrid](https://sendgrid.com) and sign up for an account if you haven't already
+   - Complete the account verification process
+
+2. **Create API Key**
+
+   - Log in to your SendGrid dashboard
+   - Navigate to Settings > API Keys
+   - Click "Create API Key"
+   - Name it specifically for the Emergency Duress App (e.g., "emergency-duress-emails")
+   - Select "Restricted Access" and enable only the "Mail Send" permission
+   - Save and securely copy your API key - it will only be shown once
+
+3. **Verify Sender Identity**
+
+   - In the SendGrid dashboard, go to Settings > Sender Authentication
+   - Follow the steps to verify your sender domain or email address
+   - This is required to ensure reliable email delivery
+
+4. **Configure API Key**
+
+   - Store your SendGrid API key securely using environment variables:
+     ```bash
+     NOTIFICATIONS__SENDGRID__APIKEY=your-sendgrid-api-key
+     ```
+   - Alternatively, use your secure configuration management system
+   - Never commit API keys to version control
+
+5. **Test Integration**
+   - Send a test email using the configuration in the Testing section below
+   - Verify the email is received and properly formatted
+   - Check SendGrid's Activity Feed to confirm successful delivery
+
+For additional details and best practices, refer to the [SendGrid Documentation](https://sendgrid.com/docs).
+
 ### 1. Email Settings
 
 In `appsettings.json` (or environment variables), configure the following email notification settings:
