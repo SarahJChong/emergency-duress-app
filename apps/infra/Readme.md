@@ -13,6 +13,7 @@
 
 ```
 cd apps
+cp .env.example .env
 chmod +x expo/docker-entrypoint.sh
 chmod +x api/Api/docker-entrypoint.sh
 chmod +x infra/web-push/generate-vapid-env.sh
