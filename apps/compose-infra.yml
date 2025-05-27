@@ -1,0 +1,41 @@
+name: duress-utils
+services:
+  webpush:
+    build:
+      context: .
+      dockerfile: ./infra/web-push/Dockerfile
+    volumes:
+      - ./.env:/app/.env
+      - ./infra/web-push/generate-vapid-env.sh:/app/generate-vapid-env.sh
+  auth0-import:
+    build:
+      context: .
+      dockerfile: ./infra/auth0/Dockerfile
+    volumes:
+      - ./infra/auth0:/app  # contains tenant.yaml, etc.
+    env_file:
+      - .env
+    entrypoint: >
+      sh -c "a0deploy import --input_file /app/config/tenant.yaml --format yaml --env true"
+  auth0-export:
+    build:
+      context: .
+      dockerfile: ./infra/auth0/Dockerfile
+    volumes:
+      - ./infra/auth0:/app
+    env_file:
+      - .env
+    entrypoint: >
+      sh -c "a0deploy export --format yaml --output_folder /app/config --env true"
+
+  auth0-update-env-values:
+    build:
+      context: .
+      dockerfile: ./infra/auth0/Dockerfile
+    volumes:
+      - ./infra/auth0:/app
+      - ./.env:/app/.env
+    env_file:
+      - .env
+    entrypoint: ["bash", "-c"]
+    command: "./update-auth0-env-values.sh \"$@\""
