@@ -1,21 +1,20 @@
 # Use root/example as user/password credentials
 
 services:
-
   mongo:
     image: mongo
     restart: always
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: example
-    ports: 
-    - 27017:27017
+    ports:
+      - 27017:27017
 
   mongo-express:
     image: mongo-express
     restart: always
     ports:
-      - 8081:8081
+      - 8881:8081
     environment:
       ME_CONFIG_MONGODB_ADMINUSERNAME: root
       ME_CONFIG_MONGODB_ADMINPASSWORD: example
@@ -30,10 +29,10 @@ services:
       - ./expo/docker-entrypoint.sh:/app/docker-entrypoint.sh
 
     ports:
-      - "19000:19000"   # Expo DevTools
-      - "19001:19001"   # React Native
-      - "19002:19002"   # DevTools UI
-      - "8082:8081"     # Metro bundler
+      - "19000:19000" # Expo DevTools
+      - "19001:19001" # React Native
+      - "19002:19002" # DevTools UI
+      - "8082:8081" # Metro bundler
     env_file:
       - .env
     stdin_open: true
@@ -52,5 +51,3 @@ services:
       - ASPNETCORE_ENVIRONMENT=Development
     ports:
       - 5052:8080
-
-

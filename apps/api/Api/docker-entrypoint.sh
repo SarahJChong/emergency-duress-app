@@ -25,6 +25,8 @@ set_config_value "$API_URL" ".Authentication.Audience"
 set_config_value "$EXPO_PUBLIC_RESOURCES_URL" ".Cors.AllowedOrigin"
 set_config_value "$DEFAULT_SENDER_EMAIL" ".Notifications.Email.DefaultSenderEmail"
 set_config_value "$EXPO_PUBLIC_RESOURCES_URL" ".Notifications.Email.WebAppBaseUrl"
+set_config_value "$VAPID_PUBLIC_KEY" ".Notifications.WebPush.VapidPublicKey"
+set_config_value "$VAPID_PRIVATE_KEY" ".Notifications.WebPush.VapidPrivateKey"
 set_config_value "$VAPID_PUBLIC_KEY" ".WebPush.VapidPublicKey"
 set_config_value "$VAPID_PRIVATE_KEY" ".WebPush.VapidPrivateKey"
 

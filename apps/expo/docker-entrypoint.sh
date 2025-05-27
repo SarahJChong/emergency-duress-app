@@ -3,9 +3,6 @@ set -e
 
 echo "🛠 Updating existing .env values from environment..."
 
-# Ensure target .env file exists
-touch .env
-
 cp .env .env.updated
 
 # Update ONLY existing keys in .env
@@ -17,11 +14,12 @@ while IFS='=' read -r key value; do
     sed -i "s|^${key_name}=.*|${key_name}=$value|" .env.updated
   fi
 done < <(env | grep '^EXPO_')
-
-
 cat .env.updated > .env
 rm .env.updated
 
+npm install --legacy-peer-deps
+
+ls -al
 
 echo "🚀 Starting Expo..."
 exec npm start
