@@ -11,6 +11,7 @@ import { z } from "zod";
  https://docs.expo.dev/guides/environment-variables/#how-to-read-from-environment-variables
 */
 const rawEnv = {
+  EXPO_PUBLIC_API_URL: process.env.EXPO_PUBLIC_API_URL,
   EXPO_PUBLIC_EMERGENCY_PHONE_NUMBER:
     process.env.EXPO_PUBLIC_EMERGENCY_PHONE_NUMBER,
   EXPO_PUBLIC_AUTH_CLIENT_ID: process.env.EXPO_PUBLIC_AUTH_CLIENT_ID,
@@ -28,6 +29,7 @@ const rawEnv = {
 
 // Define the schema for validation
 const envSchema = z.object({
+  EXPO_PUBLIC_API_URL: z.string().url(),
   EXPO_PUBLIC_EMERGENCY_PHONE_NUMBER: z.string(),
   EXPO_PUBLIC_AUTH_CLIENT_ID: z.string(),
   EXPO_PUBLIC_AUTH_ENDPOINT: z.string().url(),
