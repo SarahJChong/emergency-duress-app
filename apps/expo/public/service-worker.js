@@ -20,6 +20,10 @@ self.addEventListener("push", (event) => {
       },
     };
 
+    const channel = new BroadcastChannel("notification");
+    channel.postMessage({ type: "INCIDENTS_RELOAD" });
+    channel.close();
+
     event.waitUntil(self.registration.showNotification(data.title, options));
   } catch (err) {
     console.error("Error showing notification:", err);

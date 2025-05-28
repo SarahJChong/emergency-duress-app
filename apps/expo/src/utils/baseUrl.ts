@@ -1,6 +1,8 @@
 import { Platform } from "react-native";
 import Constants from "expo-constants";
 
+import { env } from "../env";
+
 export const getBaseUrl = () => {
   if (__DEV__) {
     if (Platform.OS === "web") {
@@ -8,7 +10,9 @@ export const getBaseUrl = () => {
     }
     const debuggerHost = Constants.expoConfig?.hostUri;
     const localhost = debuggerHost?.split(":")[0];
-    if (localhost) return `http://${localhost}:5052`;
+    if (!localhost)
+      throw new Error("failed to get localhost, configure it manually");
+    return `http://${localhost}:5052`;
   }
-  return "https://app-duress-dev-ae.azurewebsites.net";
+  return env.EXPO_PUBLIC_API_URL;
 };
