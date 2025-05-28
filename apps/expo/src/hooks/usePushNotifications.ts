@@ -1,6 +1,7 @@
-import { useCallback, useEffect } from "react";
+import { useCallback, useEffect, useRef } from "react";
 import { Platform } from "react-native";
 import * as Notifications from "expo-notifications";
+import { useQueryClient } from "@tanstack/react-query";
 
 import { getBaseUrl } from "../utils/baseUrl";
 import {
@@ -32,6 +33,7 @@ import { getAccessToken, useAuth } from "./useAuth";
  */
 export const usePushNotifications = () => {
   const { user } = useAuth();
+  const queryClient = useQueryClient();
 
   /**
    * Requests notification permissions and retrieves the appropriate push token
@@ -152,6 +154,20 @@ export const usePushNotifications = () => {
     if (!user) return;
 
     let cleanup: (() => void) | undefined;
+    let channel: BroadcastChannel | undefined;
+
+    // Set up BroadcastChannel for web platform
+    if (Platform.OS === "web" && typeof BroadcastChannel !== "undefined") {
+      channel = new BroadcastChannel("notification");
+      channel.onmessage = (event) => {
+        console.log("BroadcastChannel message received:", event.data);
+        if (event.data?.type === "INCIDENTS_RELOAD") {
+          // Invalidate all incident-related queries to trigger a refresh
+          queryClient.invalidateQueries({ queryKey: ["securityIncidents"] });
+        }
+      };
+    }
+
     const setupNotifications = async () => {
       try {
         const token = await registerForPushNotificationsAsync();
@@ -185,6 +201,9 @@ export const usePushNotifications = () => {
     return () => {
       if (cleanup) {
         cleanup();
+      }
+      if (channel) {
+        channel.close();
       }
     };
   }, [user, registerForPushNotificationsAsync, sendTokenToBackend]);
