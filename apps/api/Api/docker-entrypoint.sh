@@ -30,18 +30,7 @@ set_config_value "$VAPID_PRIVATE_KEY" ".Notifications.WebPush.VapidPrivateKey"
 set_config_value "$VAPID_PUBLIC_KEY" ".WebPush.VapidPublicKey"
 set_config_value "$VAPID_PRIVATE_KEY" ".WebPush.VapidPrivateKey"
 
-
-
-# Set values from env vars (if provided)
-#[ -n "$AUTH0_DOMAIN" ] && jq --arg val "https://$AUTH0_DOMAIN" '.Authentication.Authority = $val' "$CONFIG_FILE.updated" > tmp.$$.json && mv tmp.$$.json "$CONFIG_FILE.updated"
-# [ -n "$API_URL" ] && jq --arg val "$API_URL" '.Authentication.Audience = $val' "$CONFIG_FILE.updated" > tmp.$$.json && mv tmp.$$.json "$CONFIG_FILE.updated"
-# [ -n "$EXPO_PUBLIC_RESOURCES_URL" ] && jq --arg val "$EXPO_PUBLIC_RESOURCES_URL" '.Cors.AllowedOrigin = $val' "$CONFIG_FILE.updated" > tmp.$$.json && mv tmp.$$.json "$CONFIG_FILE.updated"
-
-
-
 echo "✅ Config updated."
-
-
 
 cat $CONFIG_FILE.updated > $CONFIG_FILE
 rm $CONFIG_FILE.updated
