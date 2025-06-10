@@ -32,7 +32,7 @@ The application uses a role-based routing system to direct users to appropriate 
 - **End User**: Regular users (residents) who can raise duress calls and manage their profile
 - **Security Responder**: Security personnel who receive and respond to duress calls
 - **System Administrator**: Full system configuration access, manages locations and users
-- **Company Manager**: Has access to all incident data (future implementation)
+- **Company Manager**: Has access to all incident data from all sites
 
 ### Access Control
 
@@ -42,6 +42,7 @@ The application uses a role-based routing system to direct users to appropriate 
   - If not authenticated -> /sign-in
   - If admin role -> /admin
   - If security role -> /security
+  - If manager role -> /security
   - Otherwise -> /user
 
 - **/user**:
@@ -52,9 +53,10 @@ The application uses a role-based routing system to direct users to appropriate 
 
 - **/security**:
 
-  - Accessible only to users with 'security' role
+  - Accessible only to users with 'security' or 'manager' role
   - Contains the security dashboard for managing incidents
   - No location registration required
+  - Managers have access to view all
 
 - **/admin**:
 
@@ -77,7 +79,8 @@ The root index performs role checks and redirects to appropriate sections:
 export default function Index() {
   if (!isSignedIn) return <Redirect href="/sign-in" />;
   if (user?.roles?.includes("admin")) return <Redirect href="/admin" />;
-  if (user?.roles?.includes("security")) return <Redirect href="/security" />;
+  if (user?.roles?.includes("security") || user?.roles?.includes("manager"))
+    return <Redirect href="/security" />;
   return <Redirect href="/user" />;
 }
 ```
@@ -91,7 +94,6 @@ export default function Index() {
 
 ## Future Considerations
 
-- Implementation of Company Manager role
 - Enhanced authorization with more granular permissions
 - Role-based UI customization
 - Audit logging for administrative actions

@@ -16,6 +16,34 @@ The backend API service for the Emergency Duress App, built with .NET 8 and Mong
 - MongoDB
 - Docker (optional)
 
+## Configuration
+
+Key configuration options in `appsettings.json`:
+
+```json
+{
+  "Authentication": {
+    "Authority": "", // Auth0 authority URL
+    "Audience": "", // API audience identifier
+    "RoleClaimType": "emergency_app/roles"
+  },
+  "MongoDb": {
+    "ConnectionString": "mongodb://localhost:27017",
+    "DatabaseName": "EmergencyDuress"
+  },
+  "Notifications": {
+    "Email": {
+      "Enabled": true,
+      "Provider": "SendGrid"
+    },
+    "Push": {
+      "Enabled": true,
+      "Provider": "Expo"
+    }
+  }
+}
+```
+
 ## Getting Started
 
 ### Local Development
@@ -88,34 +116,6 @@ Tests are organized in the `Api.Tests` project:
 - Controller tests
 - Service layer tests
 - Integration tests
-
-## Configuration
-
-Key configuration options in `appsettings.json`:
-
-```json
-{
-  "Authentication": {
-    "Authority": "", // Auth0 authority URL
-    "Audience": "", // API audience identifier
-    "RoleClaimType": "emergency_app/roles"
-  },
-  "MongoDb": {
-    "ConnectionString": "mongodb://localhost:27017",
-    "DatabaseName": "EmergencyDuress"
-  },
-  "Notifications": {
-    "Email": {
-      "Enabled": true,
-      "Provider": "SendGrid"
-    },
-    "Push": {
-      "Enabled": true,
-      "Provider": "Expo"
-    }
-  }
-}
-```
 
 ## Contributing
 
