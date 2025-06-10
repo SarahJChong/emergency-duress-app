@@ -80,6 +80,7 @@ jobs:
       EXPO_PUBLIC_COLOR_WARNING: "#ffcc00"
       EXPO_PUBLIC_RESOURCES_URL: "https://leadchangerespect.com.au"
       EXPO_PUBLIC_VAPID_KEY: "test_key"
+      EXPO_PUBLIC_API_URL: "https://api.leadchangerespect.com.au"
     defaults:
       run:
         working-directory: ./apps/expo
