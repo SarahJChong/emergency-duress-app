@@ -32,7 +32,7 @@ The Emergency Duress App uses Auth0 for authentication with OAuth 2.0 and OpenID
 4. Configure settings:
    - **Allowed Callback URLs:**
      ```
-     http://localhost:3000/callback
+     http://localhost:3000/sign-in
      ```
    - **Allowed Logout URLs:**
      ```
@@ -144,6 +144,7 @@ The application uses Auth0's roles feature to implement role-based access contro
 
 - `user`: Standard user with access to emergency features
 - `security`: Security responder with access to incident management
+- `manager`: Company manager with access to all incident information
 - `admin`: Administrator with full system access
 
 ## Implementation

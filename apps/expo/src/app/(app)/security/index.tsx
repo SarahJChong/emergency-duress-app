@@ -96,9 +96,12 @@ export default function IncidentListScreen() {
   // Parse sort option into backend API format
   const [sortBy, sortOrder] = sortOption.split("_");
 
+  // Force status to "Open" for security users
+  const effectiveStatus = isSecurity ? "Open" : status;
+
   const { data, isLoading, isError, refetch } = useSecurityIncidents({
     locationId: locationId || undefined,
-    status: status || undefined,
+    status: effectiveStatus || undefined,
     sortBy: sortBy as "date" | "status",
     sortOrder: sortOrder as "asc" | "desc",
     ...getDateRange(),
@@ -122,14 +125,16 @@ export default function IncidentListScreen() {
           {/* Header with filters and sort options */}
           <View className="border-b border-gray-200 p-4">
             <View className="flex-row flex-wrap gap-2">
-              <FormSelectField
-                label={t("security.filters.status")}
-                value={status}
-                onChange={(value) => setStatus(value)}
-                options={STATUS_OPTIONS}
-                style={{ flex: 1, minWidth: 150 }}
-                errors={[]}
-              />
+              {!isSecurity && (
+                <FormSelectField
+                  label={t("security.filters.status")}
+                  value={status}
+                  onChange={(value) => setStatus(value)}
+                  options={STATUS_OPTIONS}
+                  style={{ flex: 1, minWidth: 150 }}
+                  errors={[]}
+                />
+              )}
               <FormSelectField
                 label={t("security.filters.date_range")}
                 value={dateFilter}
