@@ -28,7 +28,8 @@ const initiatePhoneCall = async (phoneNumber: string | undefined) => {
   }
 
   try {
-    const telUrl = `tel:${phoneNumber.replace(/\D/g, "")}`;
+    const telUrl = `tel:${phoneNumber.replace(/[^\d+]/g, "")}`;
+
     const supported = await Linking.canOpenURL(telUrl);
 
     if (!supported) {
