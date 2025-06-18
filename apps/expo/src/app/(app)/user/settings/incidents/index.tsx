@@ -112,7 +112,7 @@ export default function Page() {
               />
             )}
             estimatedItemSize={100}
-            showsVerticalScrollIndicator={false}
+            showsVerticalScrollIndicator={true}
           />
         ) : incidents.length === 0 ? (
           <View className="flex-1 items-center justify-center">

@@ -180,7 +180,7 @@ public class IncidentController(
         // Apply sorting
         var sortedIncidents = query.SortBy?.ToLower() switch
         {
-            "status" => query.SortOrder?.ToLower() == "asc"
+            "status" => query.SortOrder?.ToLower() == "desc"
                 ? responses.OrderBy(i => i.Status)
                 : responses.OrderByDescending(i => i.Status),
             _ => query.SortOrder?.ToLower() == "asc"
