@@ -82,8 +82,9 @@ export default function IncidentListScreen() {
   }, [isSecurity, userQuery.data]);
 
   // Calculate date range based on filter
-  const getDateRange = () => {
+  const getDateRange = React.useMemo(() => {
     if (!dateFilter) return {};
+    // Normalize dates to start of minute to prevent unnecessary re-renders
     const now = new Date();
     const hours = dateFilter === "24h" ? 24 : dateFilter === "7d" ? 168 : 720;
     const fromDate = new Date(now.getTime() - hours * 60 * 60 * 1000);
@@ -91,7 +92,7 @@ export default function IncidentListScreen() {
       dateFrom: fromDate.toISOString(),
       dateTo: now.toISOString(),
     };
-  };
+  }, [dateFilter]);
 
   // Parse sort option into backend API format
   const [sortBy, sortOrder] = sortOption.split("_");
@@ -104,7 +105,7 @@ export default function IncidentListScreen() {
     status: effectiveStatus || undefined,
     sortBy: sortBy as "date" | "status",
     sortOrder: sortOrder as "asc" | "desc",
-    ...getDateRange(),
+    ...getDateRange,
   });
 
   if (isError) {
