@@ -8,7 +8,8 @@
     "confirm": "Confirm",
     "back": "Back",
     "loading": "Loading...",
-    "sign_out": "Sign Out"
+    "sign_out": "Sign Out",
+    "enable_notifications": "Enable Notifications"
   },
   "admin": {
     "dashboard_title": "Admin Dashboard",
