@@ -54,7 +54,7 @@ const CustomHeader = ({ title, href }: CustomHeaderProps) => {
         </Pressable>
         <View className="flex-row items-center gap-2 px-4">
           <Pressable
-            className="cursor-pointer rounded-md bg-white/10 px-2 py-1"
+            className="cursor-pointer rounded-md px-2 py-1"
             onPress={async () => {
               try {
                 await registerForPushNotificationsAsync();
