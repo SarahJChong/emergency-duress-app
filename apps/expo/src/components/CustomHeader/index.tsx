@@ -53,22 +53,20 @@ const CustomHeader = ({ title, href }: CustomHeaderProps) => {
           <Text className="flex-1 text-lg font-bold text-white">{title}</Text>
         </Pressable>
         <View className="flex-row items-center gap-2 px-4">
-          {Platform.OS !== "web" && (
-            <Pressable
-              className="cursor-pointer rounded-md bg-white/10 px-2 py-1"
-              onPress={async () => {
-                try {
-                  await registerForPushNotificationsAsync();
-                  console.log("Successfully registered for push notifications");
-                } catch (error) {
-                  console.error("Failed to register for notifications:", error);
-                }
-              }}
-              accessibilityLabel={t("common.enable_notifications")}
-            >
-              <Ionicons name="notifications-outline" size={20} color="white" />
-            </Pressable>
-          )}
+          <Pressable
+            className="cursor-pointer rounded-md bg-white/10 px-2 py-1"
+            onPress={async () => {
+              try {
+                await registerForPushNotificationsAsync();
+                console.log("Successfully registered for push notifications");
+              } catch (error) {
+                console.error("Failed to register for notifications:", error);
+              }
+            }}
+            accessibilityLabel={t("common.enable_notifications")}
+          >
+            <Ionicons name="notifications-outline" size={20} color="white" />
+          </Pressable>
           <HeaderDropDownMenu />
         </View>
       </View>
